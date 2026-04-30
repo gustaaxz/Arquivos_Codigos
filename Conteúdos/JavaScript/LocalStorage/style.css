@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Configurações Básicas e Variáveis CSS
+   ========================================================================== */
+:root {
+    /* Cores padrão do Tema Claro */
+    --bg-color: #f4f4f9;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --border-color: #dddddd;
+    --btn-bg: #4CAF50;
+    --btn-text: #ffffff;
+    --btn-hover: #45a049;
+}
+
+/* Quando o body tiver a classe 'escuro', as variáveis mudam */
+body.escuro {
+    --bg-color: #1e1e1e;
+    --text-color: #f4f4f9;
+    --card-bg: #2d2d2d;
+    --border-color: #444444;
+    --btn-bg: #2196F3;
+    --btn-text: #ffffff;
+    --btn-hover: #1976D2;
+}
+
+/* ==========================================================================
+   Estilos Gerais
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   Cards (Seções de Exercício)
+   ========================================================================== */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* ==========================================================================
+   Inputs e Botões
+   ========================================================================== */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--btn-bg);
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--btn-hover);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+/* ==========================================================================
+   Listas e Mensagens
+   ========================================================================== */
+ul {
+    list-style: none;
+}
+
+li {
+    background-color: var(--bg-color);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#boas-vindas-mensagem p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--btn-bg);
+}
+
+#contador-visitas {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--btn-bg);
+}

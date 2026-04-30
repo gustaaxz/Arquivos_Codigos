@@ -1,0 +1,30 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "(menos o var, evita ele pelo amor de Deus)",
+  "main": "index.js",
+  "dependencies": {
+    "ansi-regex": "^4.1.1",
+    "prompt-sync": "^4.2.0",
+    "strip-ansi": "^5.2.0"
+  },
+  "scripts": {
+  "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+  "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustaaxz/atividades_javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/gustaaxz/atividades_javascript/issues"
+  },
+  "homepage": "https://github.com/gustaaxz/atividades_javascript#readme",
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}

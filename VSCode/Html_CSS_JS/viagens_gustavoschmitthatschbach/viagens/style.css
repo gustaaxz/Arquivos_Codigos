@@ -1,0 +1,109 @@
+/* Reset e Fonte */
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Headers */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+h2 {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Parágrafos */
+p {
+    text-align: center;
+    margin-left: 600px;
+    margin-right: 600px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagens */
+img {
+    max-width: 30%;
+    height: auto;
+    image-rendering: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Lista de viagens principal */
+.viagens li {
+    list-style: none;           /* Remove a bolinha da lista */
+    height: 75px;               /* Altura da caixa da imagem */
+    margin-bottom: 30px;        /* Espaçamento entre as caixas */
+    color: white;             /* Cor do texto */
+    display: flex;              /* Usa flexbox para centralizar o texto */
+    align-items: center;        /* Centraliza o texto verticalmente */
+    justify-content: center;    /* Centraliza o texto horizontalmente */
+    border-radius: 25px;        /* Bordas arredondadas */
+    background-size: cover;     /* Faz a imagem ocupar todo o espaço */
+    background-position: center;/* Centraliza a imagem */
+    transition: transform 0.3s; /* Efeito suave ao passar o mouse */
+    padding: 2px;
+    border: 1px solid #ccc;;
+}
+
+/* Efeito de destaque ao passar o mouse */
+.viagens li:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+/* Links */
+.paris a, .novayork a, .toquio a, .riodj a, .lisboa a, .barcelona a, .amsterda a, .berlim a, .dubai a, .budapeste a {
+    text-decoration: none;      /* Remove o sublinhado dos links */
+    text-transform: uppercase; /* Deixa a primeira letra maiúscula */
+    color: #fff; 
+    font-size: 36px; 
+    letter-spacing: 1em;        /* separa as letras */
+    width: 50%; 
+    display: flex; 
+    justify-content: center;    /* separa as letras ainda mais */
+    align-items: center; 
+    height: 100%; 
+    font-weight: 650;
+}
+
+.paris a:hover, .novayork a:hover, .toquio a:hover, .riodj a:hover, .lisboa a:hover, .barcelona a:hover, .amsterda a:hover, .berlim a:hover, .dubai a:hover, .budapeste a:hover {
+    color: #d9d9d9;
+    text-decoration: underline;
+}
+
+/* Imagem específica para cada destino */
+.paris    { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/paris.jpg'); }
+.novayork { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/skylinenyc.png'); }
+.toquio   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/shibuya.jpg'); }
+.riodj    { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/riodejaneiro.jpg'); }
+.lisboa   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/arcodotriunfolisboa.jpg'); }
+.barcelona{ background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/catedralnotba.jpg'); }
+.amsterda { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/catedralams.webp'); }
+.berlim   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/portaoberlim.jpg'); }
+.dubai    { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/dubaimall.jpg'); }
+.budapeste{ background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/parlamentobuda.jpg'); }
+
+/* Rodapé (Footer) */
+.rodape {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}

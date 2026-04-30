@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NasAEx - O Futuro da Exploração Espacial</title>
+    <meta name="description" content="NasAEx: Liderando a exploração espacial com missões inovadoras, tecnologia de ponta e uma visão para o futuro da humanidade entre as estrelas.">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="NasAEx - O Futuro da Exploração Espacial">
+    <meta property="og:description" content="Junte-se a nós na jornada para desvendar os mistérios do universo.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:url" content="#">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Folha de Estilos Personalizada -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <!-- Cabeçalho -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect" id="header">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center space-x-3" aria-label="Página Inicial da NasAEx">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/><path d="M12.012 2.001c-5.132 0-9.458 3.86-9.96 8.919.16-4.484 3.737-8.062 8.223-8.224.582-.02 1.168-.02 1.75 0 4.485.162 8.063 3.74 8.224 8.224-.502-5.06-4.828-8.92-9.96-8.92z" fill="var(--primary-color)"/></svg>
+                    <span class="text-2xl font-bold text-white tracking-wider">NasAEx</span>
+                </a>
+
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#missions" class="nav-link">Missões</a>
+                    <a href="#rocket-parts" class="nav-link">Peças</a>
+                    <a href="#merch-store" class="nav-link">Loja</a>
+                    <a href="#newsletter" class="nav-link">Contato</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <div id="auth-container" class="relative">
+                        <!-- Botão de Login (visível quando deslogado) -->
+                        <button id="login-button" class="icon-btn" aria-label="Abrir modal de login/registro">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                        </button>
+                        <!-- Menu do Usuário (visível quando logado) -->
+                        <div id="user-menu-container" class="hidden">
+                            <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                                <span id="user-initials" class="user-initials-badge"></span>
+                            </button>
+                            <div id="user-menu" class="user-menu" role="menu" hidden>
+                                <div class="px-4 py-2 border-b border-slate-600">
+                                    <p class="text-sm text-gray-400">Logado como:</p>
+                                    <p id="user-email" class="text-sm font-medium truncate"></p>
+                                </div>
+                                <div id="role-specific-links"></div>
+                                <a href="#" id="logout-button" class="user-menu-item" role="menuitem">Sair</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="cart-button" class="icon-btn relative" aria-label="Abrir carrinho de compras">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="icon-btn" aria-label="Abrir menu de navegação">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+            <nav class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#missions" class="nav-link-mobile">Missões</a>
+                <a href="#rocket-parts" class="nav-link-mobile">Peças</a>
+                <a href="#merch-store" class="nav-link-mobile">Loja</a>
+                <a href="#newsletter" class="nav-link-mobile">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-bg min-h-screen flex items-center justify-center pt-20">
+            <div class="text-center bg-black bg-opacity-50 p-8 rounded-2xl animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">O Futuro da Exploração</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Revelando o desconhecido para o benefício da humanidade.</p>
+                <div class="mt-8">
+                    <a href="#missions" class="cta-button">Descubra as Missões</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="missions" class="py-20 bg-slate-900 animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Missões Atuais e Futuras</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="mission-card"><img src="https://images.unsplash.com/photo-1541185934-01b600ea069c?q=80&w=800&auto=format&fit=crop" alt="Rover em Marte" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-semibold mb-2">Projeto Ares IV</h3><p class="text-gray-400 mb-4">Buscando por bioassinaturas nas crateras de Marte com nosso rover de última geração.</p><span class="status-badge bg-green-500">ATIVA</span></div></article>
+                    <article class="mission-card"><img src="https://images.unsplash.com/photo-1614313913008-5b23a78572b9?q=80&w=800&auto=format&fit=crop" alt="Foguete de Missão Lunar"><div class="p-6"><h3 class="text-xl font-semibold mb-2">Base Lunar Olympus</h3><p class="text-gray-400 mb-4">Estabelecendo o primeiro posto avançado humano permanente na superfície lunar.</p><span class="status-badge bg-yellow-500">EM BREVE</span></div></article>
+                    <article class="mission-card"><img src="https://images.unsplash.com/photo-1614726353902-6d1e3742f561?q=80&w=800&auto=format&fit=crop" alt="Telescópio Espacial"><div class="p-6"><h3 class="text-xl font-semibold mb-2">Observatório Kepler-X</h3><p class="text-gray-400 mb-4">Mapeando exoplanetas em nossa galáxia para encontrar uma segunda Terra.</p><span class="status-badge bg-blue-500">EM OPERAÇÃO</span></div></article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="rocket-parts" class="py-20 animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Componentes de Foguete</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="product-card" data-name="Motor Raptor 3" data-price="1200000"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Motor+Raptor" alt="Motor Raptor" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Motor Raptor 3</h3><p class="text-gray-400">R$ 1.200.000,00</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Cone de Compósito" data-price="750000"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Cone+do+Nariz" alt="Cone do Nariz" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Cone de Compósito</h3><p class="text-gray-400">R$ 750.000,00</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Sistema de Navegação" data-price="2500000"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Sistema+de+Navegação" alt="Sistema de Navegação" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Sistema de Navegação</h3><p class="text-gray-400">R$ 2.500.000,00</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Tanque Criogênico" data-price="980000"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Tanque+de+Combustível" alt="Tanque de Combustível" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Tanque Criogênico</h3><p class="text-gray-400">R$ 980.000,00</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="merch-store" class="py-20 bg-slate-900 animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Loja NasAEx</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="product-card" data-name="Camiseta NasAEx Logo" data-price="89.90"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Camiseta" alt="Camiseta NasAEx" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Camiseta NasAEx Logo</h3><p class="text-gray-400">R$ 89,90</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Boné Bordado" data-price="59.90"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Boné" alt="Boné NasAEx" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Boné Bordado</h3><p class="text-gray-400">R$ 59,90</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Miniatura Foguete V2" data-price="149.90"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Miniatura+de+Foguete" alt="Miniatura de Foguete" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Miniatura Foguete V2</h3><p class="text-gray-400">R$ 149,90</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                    <div class="product-card" data-name="Moletom Olympus" data-price="199.90"><img src="https://placehold.co/400x400/1e293b/e2e8f0?text=Moletom" alt="Moletom Missão" class="product-image"><div class="p-4"><h3 class="text-lg font-bold">Moletom "Olympus"</h3><p class="text-gray-400">R$ 199,90</p><button class="add-to-cart-btn">Adicionar ao Carrinho</button></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="py-20 animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-slate-800 rounded-2xl p-8 md:p-12 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Junte-se à nossa jornada</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-8">Receba atualizações exclusivas sobre nossas missões, descobertas e eventos diretamente no seu email.</p>
+                    <form class="flex flex-col sm:flex-row max-w-lg mx-auto gap-4">
+                        <input type="email" placeholder="Seu melhor email" class="form-input flex-grow" required aria-label="Email para newsletter">
+                        <button type="submit" class="cta-button-secondary">Inscrever-se</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-slate-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">NasAEx</h3>
+                    <p class="text-gray-400">Explorando o universo para o futuro da humanidade.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#missions" class="footer-link">Missões</a></li>
+                        <li><a href="#merch-store" class="footer-link">Loja</a></li>
+                        <li><a href="#" class="footer-link">Carreiras</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Siga-nos</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="footer-link" aria-label="Twitter"><svg fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.93 4.93 0 004.6 3.42 9.86 9.86 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg></a>
+                        <a href="#" class="footer-link" aria-label="Instagram"><svg fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 mt-8 pt-8 border-t border-slate-700">
+                <p>&copy; 2024 NasAEx. Todos os direitos reservados. Este é um projeto de demonstração.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modals -->
+    <div id="auth-modal" class="modal-container" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="close-auth-modal-button" class="modal-close-btn" aria-label="Fechar modal">&times;</button>
+            <div id="auth-modal-content" class="text-white"></div>
+        </div>
+    </div>
+    <div id="cart-modal" class="modal-container" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="close-cart-modal-button" class="modal-close-btn" aria-label="Fechar carrinho">&times;</button>
+            <div class="text-white">
+                <h2 id="cart-title" class="text-2xl font-bold text-center mb-6">Seu Carrinho</h2>
+                <div id="cart-items" class="max-h-60 overflow-y-auto mb-6"></div>
+                <div id="cart-footer" class="hidden">
+                    <div class="flex justify-between items-center text-lg font-bold border-t border-slate-600 pt-4">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal">R$ 0,00</span>
+                    </div>
+                    <button class="cta-button w-full mt-6">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

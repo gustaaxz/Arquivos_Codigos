@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste</title>
+</head>
+<body>
+
+  <h2>Teste de Chat</h2>
+
+  <input id="msg" placeholder="Digite algo">
+  <button onclick="enviar()">Enviar</button>
+
+  <pre id="resposta"></pre>
+
+  <script>
+    async function enviar() {
+      const texto = document.getElementById("msg").value;
+      const resposta = document.getElementById("resposta");
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: texto })
+      });
+
+      const data = await res.json();
+      resposta.textContent = data.resposta;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* ===========================================================
+   1. VARIÁVEIS (O NOSSO "ESTOQUE DE CORES")
+   Imagine que guardamos as cores em potes com nomes para usar depois.
+   =========================================================== 
+*/
+:root {
+    --cor-principal: #007bff; /* Pote da cor azul principal */
+    --cor-hover: #0056b3;    /* Pote da cor azul escuro para quando passar o mouse */
+    --cor-fundo: #f0f2f5;    /* Pote da cor cinza clarinho do fundo */
+    --cor-texto: #1a1a1a;    /* Pote da cor do texto (quase preto) */
+}
+
+/* ===========================================================
+   2. REGRAS GERAIS (LIMPEZA INICIAL)
+   O navegador vem com estilos "bagunçados". Aqui nós limpamos tudo.
+   =========================================================== 
+*/
+* {
+    margin: 0;                /* Tira o espaço automático que o navegador coloca fora dos objetos */
+    padding: 0;               /* Tira o espaço automático que fica dentro dos objetos */
+    box-sizing: border-box;   /* Garante que, se eu der um tamanho ao objeto, ele não cresça se eu colocar bordas */
+    outline: none;            /* Tira aquela linha que aparece em volta de botões quando clicamos */
+}
+
+/* O corpo (body) é a "página inteira" */
+body {
+    font-family: sans-serif;  /* Escolhe uma letra limpa e moderna, sem "pezinhos" nas letras */
+    background-color: var(--cor-fundo); /* Pega a cor do nosso "pote de fundo" e pinta a tela */
+    color: var(--cor-texto);  /* Define que a cor padrão das letras é a do nosso pote de texto */
+    display: flex;            /* Ativa o modo "organizador mágico" (Flexbox) */
+    flex-direction: column;   /* Manda os objetos ficarem um embaixo do outro, como uma torre */
+    align-items: center;      /* Centraliza todos os objetos no meio da tela (esquerda/direita) */
+    padding: 40px 20px;       /* Cria um respiro de 40px no topo/fundo e 20px nas laterais */
+    min-height: 100vh;        /* Garante que a página tenha, no mínimo, a altura total da tela do seu monitor */
+}
+
+/* ===========================================================
+   3. DECORANDO AS IMAGENS
+   =========================================================== 
+*/
+img {
+    max-width: 250px;         /* Diz que a foto não pode ser maior que 250 pixels de largura */
+    height: auto;             /* Ajusta a altura automaticamente para a foto não ficar esticada ou esmagada */
+    border-radius: 15px;      /* Arredonda os cantos da foto (como um cartão) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Cria uma sombra para parecer que a foto está flutuando */
+    margin-bottom: 30px;      /* Empurra o texto que vem abaixo para dar espaço */
+    transition: transform 0.3s; /* Diz que, se a foto mudar de tamanho, deve ser um movimento suave, não brusco */
+}
+
+/* Quando o mouse passar em cima da imagem... */
+img:hover {
+    transform: scale(1.05);   /* Aumenta a foto em 5% (efeito de "zoom") */
+}
+
+/* ===========================================================
+   4. DECORANDO OS TEXTOS (Títulos e Parágrafos)
+   =========================================================== 
+*/
+h1,h2,h3,h4,h5,h6,p {
+    background-color: #ffffff; /* Coloca um fundo branco atrás do texto */
+    color: #1a1a1a;            /* Garante que a letra seja bem escura para facilitar a leitura */
+    width: 100%;               /* Tenta ocupar toda a largura disponível */
+    max-width: 600px;          /* Mas não deixa passar de 600 pixels para não ficar esticado demais */
+    margin-bottom: 15px;       /* Dá um espaço entre um bloco de texto e o outro */
+    padding: 20px;             /* Cria um espaço entre o texto e a borda do seu fundo branco */
+    text-align: center;        /* Coloca o texto exatamente no meio do bloco */
+    border-radius: 50px;       /* Deixa o fundo branco com formato de "pílula" (bem arredondado) */
+    border: 2px solid #ddd;    /* Desenha uma linha fina cinza em volta do bloco */
+    transition: all 0.2s;      /* Avisa que qualquer mudança (como no mouse) deve ser suave */
+}
+
+/* Quando o mouse passar no título ou no parágrafo... */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover {
+    transform: translateY(-3px); /* Faz o bloco "pular" 3 pixels para cima */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Deixa a sombra mais forte para parecer que subiu */
+    border-color: var(--cor-principal);    /* Muda a cor da borda para o nosso azul */
+}
+
+/* ===========================================================
+   5. DECORANDO OS LINKS (BOTÕES)
+   =========================================================== 
+*/
+a {
+    display: inline-block;     /* Permite que o link aceite tamanhos e margens (links comuns não aceitam bem) */
+    margin-top: 20px;          /* Dá um espaço em relação ao texto de cima */
+    padding: 12px 30px;        /* Define o tamanho do botão (distância entre o texto e a borda) */
+    background-color: var(--cor-principal); /* Pinta o fundo do botão com o nosso azul */
+    color: white;              /* Pinta a letra do botão de branco */
+    text-decoration: none;     /* Tira aquele risco (sublinhado) que todo link tem por padrão */
+    border-radius: 25px;       /* Deixa o botão arredondado */
+    font-weight: bold;         /* Deixa a letra mais grossa (negrito) */
+    border: 1px solid black;   /* Coloca uma linha preta em volta para dar destaque */
+    transition: 0.3s;          /* Faz todas as mudanças serem lentas e bonitas */
+}
+
+/* Quando o mouse passar no botão... */
+a:hover {
+    background-color: var(--cor-hover); /* Muda o azul para um tom mais escuro */
+    transform: scale(1.1);              /* Aumenta o botão em 10% */
+}

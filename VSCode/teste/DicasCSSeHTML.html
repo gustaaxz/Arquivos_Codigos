@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MasterClass CSS: O Guia Completo</title>
+
+    <style>
+        /* 
+           =========================================
+           1. VARIÁVEIS (Custom Properties)
+           O que faz: Armazena valores que você repete muito.
+           Como fazer: Defina dentro do :root com "--". 
+           Uso: var(--nome-da-variavel).
+           ========================================= 
+        */
+        :root {
+            --primaria: #4f46e5;
+            --secundaria: #ec4899;
+            --fundo: #f8fafc;
+            --texto: #1e293b;
+            --transicao: all 0.3s ease; /* Padroniza a velocidade de efeitos */
+        }
+
+        /* 
+           =========================================
+           2. RESET E BOX MODEL
+           O que faz: Remove margens padrão do navegador e 
+           ajusta como o tamanho das caixas é calculado.
+           ========================================= 
+        */
+        * {
+            margin: 0;        /* Remove espaço externo padrão */
+            padding: 0;       /* Remove espaço interno padrão */
+            box-sizing: border-box; /* Essencial: Padding e borda não aumentam o tamanho do elemento */
+            outline: none;    /* Remove aquela linha azul feia em cliques */
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--fundo);
+            color: var(--texto);
+            line-height: 1.6; /* Melhora a leitura aumentando espaço entre linhas */
+            padding: 20px;
+        }
+
+        /* 
+           =========================================
+           3. LAYOUT GRID (O "Pai" das Colunas)
+           O que faz: Cria uma estrutura de colunas e linhas.
+           ========================================= 
+        */
+        .grid-master {
+            display: grid; 
+            /* repeat(auto-fit...): Cria colunas automáticas que se quebram no celular */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; /* Espaço entre as caixas */
+            max-width: 1200px;
+            margin: 0 auto; /* Centraliza o container na tela */
+        }
+
+        /* 
+           =========================================
+           4. BOX MODEL & ESTILOS VISUAIS
+           Aqui controlamos bordas, sombras e espaços.
+           ========================================= 
+        */
+        .card {
+            background: white;
+            padding: 2rem;           /* Espaço interno */
+            border-radius: 1rem;     /* Arredonda cantos */
+            border: 1px solid #ddd;  /* Linha em volta */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave */
+            position: relative;      /* Permite posicionar itens dentro dele com 'absolute' */
+            overflow: hidden;        /* Esconde o que sair para fora da caixa */
+            transition: var(--transicao); /* Prepara o elemento para animar */
+        }
+
+        /* PSEUDO-CLASSE :HOVER (Ao passar o mouse) */
+        .card:hover {
+            transform: translateY(-5px); /* Move o card para cima */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-color: var(--primaria);
+        }
+
+        /* 
+           =========================================
+           5. FLEXBOX (O "Rei" do Alinhamento)
+           O que faz: Alinha itens em linha ou coluna.
+           ========================================= 
+        */
+        .flex-container {
+            display: flex;
+            justify-content: space-between; /* Itens para as pontas */
+            align-items: center;    /* Centraliza verticalmente */
+            flex-wrap: wrap;        /* Se não couber, pula linha */
+            background: #eee;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* 
+           =========================================
+           6. TIPOGRAFIA AVANÇADA
+           ========================================= 
+        */
+        h1 {
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 3rem); /* Fonte que aumenta/diminui conforme a tela */
+            background: linear-gradient(to right, var(--primaria), var(--secundaria));
+            -webkit-background-clip: text; /* Faz o gradiente ficar dentro do texto */
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        /* 
+           =========================================
+           7. ANIMAÇÕES (@keyframes)
+           O que faz: Cria movimentos automáticos.
+           ========================================= 
+        */
+        @keyframes flutuar {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .elemento-animado {
+            width: 50px;
+            height: 50px;
+            background: var(--secundaria);
+            border-radius: 50%;
+            margin: 10px auto;
+            animation: flutuar 3s infinite ease-in-out; /* Nome, duração, repetição, tipo */
+        }
+
+        /* 
+           =========================================
+           8. RESPONSIVIDADE (Media Queries)
+           O que faz: Muda o estilo baseado no tamanho da tela.
+           ========================================= 
+        */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .grid-master { grid-template-columns: 1fr; } /* Força 1 coluna no celular */
+        }
+
+        /* 
+           =========================================
+           9. ESTILOS DE ELEMENTOS ÚNICOS
+           ========================================= 
+        */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primaria);
+            color: white;
+            text-decoration: none;  /* Remove sublinhado de link */
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;        /* Muda o mouse para "mãozinha" */
+            border: none;
+        }
+
+        .btn:active { transform: scale(0.9); } /* Efeito de apertar botão */
+
+    </style>
+</head>
+<body>
+
+    <h1>Dominando HTML & CSS</h1>
+
+    <div class="grid-master">
+        
+        <!-- CARD 1: Box Model -->
+        <article class="card">
+            <h2>Box Model</h2>
+            <p><strong>Padding:</strong> Espaço dentro.<br>
+               <strong>Margin:</strong> Espaço fora.<br>
+               <strong>Border:</strong> A casca.</p>
+            <div class="elemento-animado"></div>
+        </article>
+
+        <!-- CARD 2: Flexbox -->
+        <article class="card">
+            <h2>Flexbox</h2>
+            <div class="flex-container">
+                <div style="background:red; width:30px; height:30px;"></div>
+                <div style="background:blue; width:30px; height:30px;"></div>
+                <div style="background:green; width:30px; height:30px;"></div>
+            </div>
+            <p>Usado para alinhar itens e criar barras de navegação (menus).</p>
+        </article>
+
+        <!-- CARD 3: Interatividade -->
+        <article class="card">
+            <h2>Interação</h2>
+            <p>Passe o mouse no card ou clique no botão para ver as <em>Transitions</em> e <em>States</em>.</p>
+            <button class="btn">Botão Moderno</button>
+        </article>
+
+    </div>
+
+</body>
+</html>

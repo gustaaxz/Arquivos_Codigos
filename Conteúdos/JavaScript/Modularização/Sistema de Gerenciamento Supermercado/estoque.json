@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nome": "tenis",
+    "marca": "adidas",
+    "categoria": "tenis",
+    "preco": 1000,
+    "quantidade": 1
+  },
+  {
+    "id": 2,
+    "nome": "jurandir",
+    "marca": "phillips",
+    "categoria": "tv",
+    "preco": 2e+32,
+    "quantidade": 67
+  },
+  {
+    "id": 3,
+    "nome": "jurandir",
+    "marca": "abidas",
+    "categoria": "pantufa",
+    "preco": 49357,
+    "quantidade": 237864
+  },
+  {
+    "id": 4,
+    "nome": "ttyyyyyyyyyyyyyyyyyyyyyy",
+    "marca": "gthgfdgdg",
+    "categoria": "hjgfdgsadsfg",
+    "preco": 7654,
+    "quantidade": 9999
+  },
+  {
+    "id": 5,
+    "nome": "pastel",
+    "marca": "eeeeeeeeeeeeeeeeeee",
+    "categoria": "comida",
+    "preco": 12,
+    "quantidade": 200
+  }
+]

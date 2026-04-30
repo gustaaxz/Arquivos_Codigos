@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador e Mini-Jogos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        #countdown, .tictactoe-cell {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .tab-active {
+            background-color: #111827; /* bg-gray-900 */
+            color: white;
+        }
+        .tictactoe-cell {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            background-color: #1f2937; /* bg-gray-800 */
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .tictactoe-cell:hover {
+            background-color: #374151; /* bg-gray-700 */
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen p-4">
+    <div class="bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md mx-auto border border-gray-700">
+        <!-- Abas de Navegação -->
+        <div class="flex border-b border-gray-700 rounded-t-2xl overflow-hidden">
+            <button id="tab-countdown" data-view="countdown" class="tab flex-1 p-4 font-bold text-gray-300 hover:bg-gray-800 transition-colors tab-active">Contador</button>
+            <button id="tab-tictactoe" data-view="tictactoe" class="tab flex-1 p-4 font-bold text-gray-300 hover:bg-gray-800 transition-colors">Jogo da Velha</button>
+            <button id="tab-clicker" data-view="clicker" class="tab flex-1 p-4 font-bold text-gray-300 hover:bg-gray-800 transition-colors">Teste de Clique</button>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-6">
+            <!-- Visão do Contador -->
+            <div id="view-countdown" class="view text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2 text-white">Contagem Regressiva</h1>
+                <p class="text-lg text-gray-400 mb-6">Tempo restante para as 14:30</p>
+                <div id="countdown" class="text-5xl sm:text-6xl md:text-7xl font-bold bg-black p-4 rounded-lg text-white tracking-wider flex items-center justify-center">
+                    --:--:--
+                </div>
+                <p id="message" class="mt-6 text-base text-gray-500"></p>
+            </div>
+
+            <!-- Visão do Jogo da Velha -->
+            <div id="view-tictactoe" class="view text-center hidden">
+                 <h2 class="text-3xl font-bold mb-4">Jogo da Velha</h2>
+                 <div id="tictactoe-board" class="grid grid-cols-3 gap-2 mx-auto w-max mb-4">
+                    <!-- Células serão geradas pelo JS -->
+                 </div>
+                 <p id="tictactoe-status" class="text-lg text-gray-400 h-8 mb-2"></p>
+                 <button id="tictactoe-restart" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">Reiniciar Jogo</button>
+            </div>
+
+            <!-- Visão do Teste de Clique -->
+            <div id="view-clicker" class="view text-center hidden">
+                <h2 class="text-3xl font-bold mb-4">Teste de Velocidade</h2>
+                <p class="text-gray-400 mb-4">Clique no botão o mais rápido que puder em 10 segundos!</p>
+                <button id="clicker-start" class="bg-white text-black font-bold py-3 px-6 rounded-lg text-xl mb-4 transition-transform hover:scale-105">Iniciar!</button>
+                <div id="clicker-game-area" class="hidden">
+                    <p class="text-2xl mb-2">Tempo restante: <span id="clicker-time">10</span>s</p>
+                    <button id="clicker-button" class="w-full h-32 bg-gray-700 rounded-lg text-2xl font-bold">Clique aqui!</button>
+                </div>
+                <p id="clicker-result" class="text-2xl mt-4 font-bold h-8"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- LÓGICA GERAL DAS ABAS ---
+        const tabs = document.querySelectorAll('.tab');
+        const views = document.querySelectorAll('.view');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const viewName = tab.dataset.view;
+
+                // Esconde todas as visões e remove a classe ativa das abas
+                views.forEach(view => view.classList.add('hidden'));
+                tabs.forEach(t => t.classList.remove('tab-active'));
+
+                // Mostra a visão correta e ativa a aba
+                document.getElementById(`view-${viewName}`).classList.remove('hidden');
+                tab.classList.add('tab-active');
+            });
+        });
+
+        // --- LÓGICA DO CONTADOR ---
+        const countdownElement = document.getElementById('countdown');
+        const messageElement = document.getElementById('message');
+
+        function updateCountdown() {
+            const now = new Date();
+            let target = new Date();
+            target.setHours(14, 30, 0, 0);
+
+            if (now > target) {
+                target.setDate(target.getDate() + 1);
+                messageElement.textContent = "A contagem é para as 14:30 de amanhã.";
+            } else {
+                messageElement.textContent = "A contagem é para as 14:30 de hoje.";
+            }
+
+            const difference = target.getTime() - now.getTime();
+            
+            if (difference <= 0) {
+                 countdownElement.textContent = "00:00:00";
+                 messageElement.textContent = "Chegou a hora!";
+                 return;
+            }
+
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // --- LÓGICA DO JOGO DA VELHA ---
+        const boardElement = document.getElementById('tictactoe-board');
+        const statusElement = document.getElementById('tictactoe-status');
+        const restartButton = document.getElementById('tictactoe-restart');
+        
+        let boardState = Array(9).fill(null);
+        let currentPlayer = 'X';
+        let gameActive = true;
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Linhas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Colunas
+            [0, 4, 8], [2, 4, 6]  // Diagonais
+        ];
+
+        function handleCellClick(e) {
+            const cell = e.target;
+            const cellIndex = parseInt(cell.dataset.index);
+
+            if (boardState[cellIndex] !== null || !gameActive) {
+                return;
+            }
+
+            boardState[cellIndex] = currentPlayer;
+            cell.textContent = currentPlayer;
+            
+            checkResult();
+        }
+
+        function checkResult() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const winCondition = winningConditions[i];
+                let a = boardState[winCondition[0]];
+                let b = boardState[winCondition[1]];
+                let c = boardState[winCondition[2]];
+                if (a === null || b === null || c === null) continue;
+                if (a === b && b === c) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                statusElement.textContent = `Jogador "${currentPlayer}" venceu!`;
+                gameActive = false;
+                return;
+            }
+
+            if (!boardState.includes(null)) {
+                statusElement.textContent = 'Deu velha!';
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            statusElement.textContent = `É a vez do jogador "${currentPlayer}"`;
+        }
+
+        function restartGame() {
+            boardState = Array(9).fill(null);
+            gameActive = true;
+            currentPlayer = 'X';
+            statusElement.textContent = `É a vez do jogador "${currentPlayer}"`;
+            document.querySelectorAll('.tictactoe-cell').forEach(cell => cell.textContent = '');
+        }
+
+        function createBoard() {
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('tictactoe-cell');
+                cell.dataset.index = i;
+                cell.addEventListener('click', handleCellClick);
+                boardElement.appendChild(cell);
+            }
+        }
+        
+        createBoard();
+        restartButton.addEventListener('click', restartGame);
+        restartGame();
+
+        // --- LÓGICA DO TESTE DE CLIQUE ---
+        const clickerStartBtn = document.getElementById('clicker-start');
+        const clickerGameArea = document.getElementById('clicker-game-area');
+        const clickerButton = document.getElementById('clicker-button');
+        const clickerTimeEl = document.getElementById('clicker-time');
+        const clickerResultEl = document.getElementById('clicker-result');
+
+        let clickCount = 0;
+        let timeLeft = 10;
+        let clickerInterval;
+
+        clickerStartBtn.addEventListener('click', () => {
+            clickCount = 0;
+            timeLeft = 10;
+            clickerResultEl.textContent = '';
+            clickerTimeEl.textContent = timeLeft;
+            clickerStartBtn.classList.add('hidden');
+            clickerGameArea.classList.remove('hidden');
+            clickerButton.disabled = false;
+
+            clickerInterval = setInterval(() => {
+                timeLeft--;
+                clickerTimeEl.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(clickerInterval);
+                    clickerGameArea.classList.add('hidden');
+                    clickerStartBtn.classList.remove('hidden');
+                    clickerStartBtn.textContent = "Jogar Novamente";
+                    clickerButton.disabled = true;
+                    const cps = (clickCount / 10).toFixed(2);
+                    clickerResultEl.textContent = `${clickCount} cliques! (${cps} por segundo)`;
+                }
+            }, 1000);
+        });
+
+        clickerButton.addEventListener('click', () => {
+            clickCount++;
+        });
+
+    </script>
+</body>
+</html>
+

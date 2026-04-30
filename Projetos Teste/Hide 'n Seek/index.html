@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hide 'n Seek — Multiplayer Prop Hunt</title>
+  <meta name="description" content="Jogo multiplayer online de esconde-esconde com transformação em objetos. Hunter vs Hiders em mapas temáticos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PARTICLE BACKGROUND
+═══════════════════════════════════════════ -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: MAIN MENU
+═══════════════════════════════════════════ -->
+<div id="screen-main" class="screen active">
+  <div class="menu-wrapper">
+    <div class="logo-block">
+      <div class="logo-icon">🎭</div>
+      <h1 class="logo-title">HIDE <span>'N</span> SEEK</h1>
+      <p class="logo-subtitle">PROP HUNT MULTIPLAYER</p>
+    </div>
+
+    <nav class="main-nav">
+      <button class="btn btn-primary pulse" id="btn-quick-play">
+        <span class="btn-icon">⚡</span> Jogo Rápido
+      </button>
+      <button class="btn btn-secondary" id="btn-create-room">
+        <span class="btn-icon">🏠</span> Criar Sala
+      </button>
+      <button class="btn btn-secondary" id="btn-join-room">
+        <span class="btn-icon">🔑</span> Entrar em Sala
+      </button>
+      <div class="btn-row">
+        <button class="btn btn-outline" id="btn-stats">
+          <span class="btn-icon">📊</span> Stats
+        </button>
+        <button class="btn btn-outline" id="btn-settings">
+          <span class="btn-icon">⚙</span> Config
+        </button>
+      </div>
+    </nav>
+
+    <div class="player-info-bar" id="player-bar">
+      <div class="player-avatar" id="player-avatar">?</div>
+      <div>
+        <div class="player-name" id="player-name-display">Conectando...</div>
+        <div class="player-rank" id="player-rank-display">⭐ Novato</div>
+      </div>
+      <div class="player-xp-wrap">
+        <div class="xp-label" id="player-xp-display">0 XP</div>
+        <div class="xp-bar-wrap"><div class="xp-bar" id="xp-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: CREATE ROOM
+═══════════════════════════════════════════ -->
+<div id="screen-create" class="screen">
+  <div class="panel">
+    <button class="btn-back" id="btn-back-create">← Voltar</button>
+    <h2 class="panel-title">🏠 Criar Sala</h2>
+
+    <div class="form-group">
+      <label>Nome da Sala</label>
+      <input type="text" id="room-name" class="input" placeholder="Ex: Sala do Terror" maxlength="24" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Máx. Jogadores</label>
+        <select id="room-max-players" class="input">
+          <option value="2">2 jogadores</option>
+          <option value="4" selected>4 jogadores</option>
+          <option value="6">6 jogadores</option>
+          <option value="8">8 jogadores</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Duração</label>
+        <select id="room-duration" class="input">
+          <option value="120">2 min</option>
+          <option value="180" selected>3 min</option>
+          <option value="300">5 min</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Mapa</label>
+      <div class="map-picker" id="map-picker">
+        <div class="map-card selected" data-map="abandoned_house">
+          <div class="map-icon">🏚️</div>
+          <div class="map-name">Casa Abandonada</div>
+        </div>
+        <div class="map-card" data-map="warehouse">
+          <div class="map-icon">🏭</div>
+          <div class="map-name">Armazém</div>
+        </div>
+        <div class="map-card" data-map="school">
+          <div class="map-icon">🏫</div>
+          <div class="map-name">Escola</div>
+        </div>
+        <div class="map-card" data-map="mansion">
+          <div class="map-icon">🏰</div>
+          <div class="map-name">Mansão</div>
+        </div>
+        <div class="map-card" data-map="lab">
+          <div class="map-icon">🔬</div>
+          <div class="map-name">Laboratório</div>
+        </div>
+        <div class="map-card" data-map="city">
+          <div class="map-icon">🌃</div>
+          <div class="map-name">Cidade</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="toggle-label">
+        <input type="checkbox" id="room-private" />
+        <span class="toggle"></span>
+        Sala Privada
+      </label>
+    </div>
+    <button class="btn btn-primary full-width" id="btn-confirm-create">Criar Sala</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: JOIN ROOM
+═══════════════════════════════════════════ -->
+<div id="screen-join" class="screen">
+  <div class="panel">
+    <button class="btn-back" id="btn-back-join">← Voltar</button>
+    <h2 class="panel-title">🔑 Entrar em Sala</h2>
+
+    <div class="room-code-display" id="room-code-large">
+      <span id="code-d1">-</span><span id="code-d2">-</span>
+      <span class="code-sep">—</span>
+      <span id="code-d3">-</span><span id="code-d4">-</span>
+    </div>
+
+    <div class="form-group">
+      <label>Código da Sala (6 dígitos)</label>
+      <input type="text" id="join-code" class="input code-input" placeholder="ABC123"
+             maxlength="6" style="text-transform:uppercase;letter-spacing:0.3em;text-align:center" />
+    </div>
+    <button class="btn btn-primary full-width" id="btn-confirm-join">Conectar</button>
+
+    <div class="divider">ou</div>
+
+    <div class="public-rooms" id="public-rooms-list">
+      <p class="empty-msg">Buscando salas públicas...</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: LOBBY
+═══════════════════════════════════════════ -->
+<div id="screen-lobby" class="screen">
+  <div class="panel panel-wide">
+    <h2 class="panel-title">🎮 Lobby</h2>
+    <div class="lobby-code-bar">
+      <span>Código: </span>
+      <strong id="lobby-code-display">------</strong>
+      <button class="btn-copy" id="btn-copy-code" title="Copiar código">📋</button>
+    </div>
+
+    <div class="lobby-players" id="lobby-players-list">
+      <!-- player slots filled by JS -->
+    </div>
+
+    <div class="lobby-map-info">
+      <div class="map-icon-lg" id="lobby-map-icon">🏚️</div>
+      <div>
+        <div id="lobby-map-name">Casa Abandonada</div>
+        <div id="lobby-duration-display">3 minutos</div>
+      </div>
+    </div>
+
+    <div id="countdown-bar" class="countdown-bar hidden">
+      <span id="countdown-text">Iniciando em 5...</span>
+    </div>
+
+    <div class="lobby-btns">
+      <button class="btn btn-outline" id="btn-leave-lobby">Sair</button>
+      <button class="btn btn-primary" id="btn-start-game">▶ Iniciar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: SETTINGS
+═══════════════════════════════════════════ -->
+<div id="screen-settings" class="screen">
+  <div class="panel">
+    <button class="btn-back" id="btn-back-settings">← Voltar</button>
+    <h2 class="panel-title">⚙ Configurações</h2>
+
+    <div class="form-group">
+      <label>Volume Música <span id="vol-music-val">70%</span></label>
+      <input type="range" id="vol-music" class="slider" min="0" max="100" value="70" />
+    </div>
+    <div class="form-group">
+      <label>Volume Efeitos <span id="vol-sfx-val">100%</span></label>
+      <input type="range" id="vol-sfx" class="slider" min="0" max="100" value="100" />
+    </div>
+    <div class="form-group">
+      <label>Qualidade Gráfica</label>
+      <select id="gfx-quality" class="input">
+        <option value="low">Baixa</option>
+        <option value="medium" selected>Média</option>
+        <option value="high">Alta</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nome do Jogador</label>
+      <input type="text" id="player-name-input" class="input" placeholder="Seu apelido" maxlength="16" />
+    </div>
+    <button class="btn btn-primary full-width" id="btn-save-settings">Salvar</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: STATS
+═══════════════════════════════════════════ -->
+<div id="screen-stats" class="screen">
+  <div class="panel">
+    <button class="btn-back" id="btn-back-stats">← Voltar</button>
+    <h2 class="panel-title">📊 Estatísticas</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-val" id="stat-wins">0</div><div class="stat-label">Vitórias</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-losses">0</div><div class="stat-label">Derrotas</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-kills">0</div><div class="stat-label">Eliminações</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-survived">0</div><div class="stat-label">Sobrevivências</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-xp">0</div><div class="stat-label">XP Total</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-games">0</div><div class="stat-label">Partidas</div></div>
+    </div>
+    <div class="rank-display">
+      <div class="rank-badge" id="rank-badge">⭐</div>
+      <div class="rank-name" id="rank-name">Novato</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: GAME (Phaser canvas)
+═══════════════════════════════════════════ -->
+<div id="screen-game" class="screen">
+  <div id="game-container"></div>
+
+  <!-- HUD Overlay -->
+  <div id="hud" class="hud hidden">
+    <!-- Top bar -->
+    <div class="hud-top">
+      <div class="hud-timer" id="hud-timer">3:00</div>
+      <div class="hud-role" id="hud-role">HIDER</div>
+      <div class="hud-players" id="hud-players">4 vivos</div>
+    </div>
+
+    <!-- Hunter: ammo + radar cooldown -->
+    <div class="hud-hunter hidden" id="hud-hunter">
+      <div class="ammo-display" id="ammo-display">
+        <span class="ammo-bullets" id="ammo-bullets">●●●●●●</span>
+        <span class="ammo-label">MUNIÇÃO</span>
+      </div>
+      <div class="radar-btn" id="radar-btn">
+        📡 <span id="radar-cooldown">Radar</span>
+      </div>
+    </div>
+
+    <!-- Hider: transform UI -->
+    <div class="hud-hider hidden" id="hud-hider">
+      <div class="transform-hint" id="transform-hint">
+        Pressione <kbd>E</kbd> para se disfarçar
+      </div>
+      <div class="prop-selector hidden" id="prop-selector">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- Minimap -->
+    <canvas id="minimap-canvas" width="120" height="120"></canvas>
+
+    <!-- Crosshair (hunter only) -->
+    <div class="crosshair hidden" id="crosshair">+</div>
+
+    <!-- Kill feed -->
+    <div class="kill-feed" id="kill-feed"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN: RESULT
+═══════════════════════════════════════════ -->
+<div id="screen-result" class="screen">
+  <div class="result-panel">
+    <div class="result-icon" id="result-icon">🏆</div>
+    <h2 class="result-title" id="result-title">VITÓRIA!</h2>
+    <p class="result-sub" id="result-sub">Você sobreviveu até o fim!</p>
+    <div class="result-xp">
+      <span>+<span id="result-xp-gain">150</span> XP</span>
+    </div>
+    <div class="result-stats" id="result-stats"></div>
+    <div class="result-btns">
+      <button class="btn btn-primary" id="btn-play-again">Jogar Novamente</button>
+      <button class="btn btn-outline" id="btn-back-menu-result">Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     GLOBAL NOTIFICATION TOAST
+═══════════════════════════════════════════ -->
+<div id="toast" class="toast"></div>
+
+<!-- ═══════════════════════════════════════════
+     LOADING OVERLAY
+═══════════════════════════════════════════ -->
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loader-wrap">
+    <div class="loader-ring"></div>
+    <div class="loader-msg" id="loader-msg">Inicializando...</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<!-- Firebase Compat -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<!-- Phaser 3 -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+<!-- Game scripts -->
+<script src="firebase.js"></script>
+<script src="game_engine.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

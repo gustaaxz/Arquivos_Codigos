@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/byte.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Contato - Byte a Byte</title>
+</head>
+<body class="article-page">
+    <header>
+        <div class="logo-menu">
+            <img src="/img/byte.ico" alt="logo">
+            <div class="menu-title">
+                <h1>Byte a Byte</h1>
+            </div>
+        </div>
+        <nav class="menu-btn">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="/html/about.html">About</a></li>
+            <li><a href="/html/contact.html">Contact</a></li>
+            <li><a href="#main-footer">Rodapé</a></li>
+        </nav>
+    </header>
+
+    <div class="layout-container">
+        <main>
+            <div class="text-main">
+                <h2>Entre em Contato</h2>
+                <p>Dúvidas sobre hardware ou sugestões para o blog? Mande sua mensagem!</p>
+            </div>
+            
+            <section class="main-articles">
+                <article class="article-card">
+                    <div class="article-top">
+                        <div class="article-text-container">
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <label for="nome">Nome Completo</label>
+                                    <input type="text" id="nome" placeholder="Seu nome completo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail Profissional</label>
+                                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mensagem">Mensagem</label>
+                                    <textarea id="mensagem" rows="5" placeholder="Como posso te ajudar?" required></textarea>
+                                </div>
+                                <button type="submit" class="know-more">Enviar Mensagem</button>
+                            </form>
+                        </div>
+
+                        <div class="specs-container" style="margin-top: 0; flex: 1;">
+                            <h3>Informações</h3>
+                            <table class="specs-table">
+                                <tr>
+                                    <td><i class="fas fa-map-marker-alt"></i> Localização</td>
+                                    <td><strong>Jaraguá do Sul, SC</strong><br>Bairro Nova Brasília</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-clock"></i> Atendimento</td>
+                                    <td>Segunda a Sexta<br>08:00 - 18:00</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-envelope"></i> E-mail</td>
+                                    <td>contato@byteabyte.com</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <p>© 2026 Byte a Byte. Todos os Direitos Reservados.</p>
+        </div>
+        <div class="social-media">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+    </footer>
+</body>
+</html>

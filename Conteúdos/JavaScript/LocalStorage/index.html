@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios - Local Storage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="claro"> <!-- O tema inicial é 'claro' -->
+    <script>
+        // PREVINE O FLASH: Lê o localStorage imediatamente antes da página renderizar
+        const temaSalvoImediato = localStorage.getItem("tema");
+        if (temaSalvoImediato) {
+            document.body.className = temaSalvoImediato;
+        }
+    </script>
+    <main class="container">
+        <h1>Exercícios Práticos - Local Storage</h1>
+
+        <!-- Exercício 1: Salvando e Recuperando Dados -->
+        <section class="card">
+            <h2>1. Boas-vindas</h2>
+            <div id="boas-vindas-mensagem">
+                <!-- A mensagem "Bem-vindo, [Nome]!" aparecerá aqui via JavaScript -->
+            </div>
+            <div class="input-group">
+                <input type="text" id="input-nome" placeholder="Digite seu nome">
+                <button id="btn-salvar-nome">Salvar Nome</button>
+            </div>
+        </section>
+
+        <!-- Exercício 3: Contador de Visitas -->
+        <section class="card">
+            <h2>3. Contador de Visitas</h2>
+            <p>Você visitou esta página <span id="contador-visitas">0</span> vezes.</p>
+        </section>
+
+        <!-- Exercício 4: Escolha de Tema -->
+        <section class="card">
+            <h2>4. Escolha de Tema</h2>
+            <p class="mb-15">Selecione o tema de sua preferência:</p>
+            <div class="button-group">
+                <button id="btn-tema-claro">Tema Claro</button>
+                <button id="btn-tema-escuro">Tema Escuro</button>
+            </div>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

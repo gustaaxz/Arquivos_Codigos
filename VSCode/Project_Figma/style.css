@@ -1,0 +1,352 @@
+/* Importação da fonte externa Space Grotesk via Google Fonts API */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* Seletor universal: Aplica configurações base para todos os elementos da página */
+* {
+    margin: 0; /* Remove margens externas padrão do navegador */
+    padding: 0; /* Remove preenchimentos internos padrão do navegador */
+    font-family: "Space Grotesk", "Sans-Serif"; /* Define a família tipográfica padrão */
+}
+
+/* Definição de variáveis globais (Custom Properties) para consistência de cores */
+:root {
+    --azulclaro: #3778FA; /* Azul principal da identidade visual */
+    --cinza: #5e5e5e; /* Cinza intermediário para textos e ícones */
+    --cinza-claro: #f3f3f3; /* Cinza muito claro para fundos de seções */
+}
+
+/* Estilização do cabeçalho da página */
+header {
+    display: flex; /* Habilita o modelo de caixa flexível */
+    justify-content: space-between; /* Distribui logo e menu nas extremidades opostas */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    padding: 1.5rem; /* Define o espaçamento interno do cabeçalho */
+}
+
+/* Estilo do título H1 dentro do cabeçalho */
+.header-title h1 {
+    color: var(--azulclaro); /* Usa a variável de cor azul definida no :root */
+    font-weight: 500; /* Define peso de fonte médio */
+    font-size: 1.5rem; /* Define o tamanho da fonte */
+}
+
+/* Estilização do ícone de menu hambúrguer */
+.hamburguer-menu {
+    font-size: 1.5rem; /* Define o tamanho do ícone */
+    margin-right: 1rem; /* Adiciona margem à direita para respiro */
+    display: inline-block; /* Permite a aplicação de transformações geométricas */
+    transform: scaleX(1.5); /* Estica o ícone horizontalmente em 50% */
+    transform-origin: right; /* Define o ponto de ancoragem da transformação na direita */
+}
+
+/* Container de textos da seção superior do Main */
+.top-main-texts {
+    text-align: center; /* Centraliza o alinhamento dos textos */
+    padding: 2rem 1.5rem; /* Define o espaçamento interno superior/inferior e lateral */
+    font-size: 1rem; /* Define o tamanho base da fonte para este container */
+    flex-direction: column; /* Define a direção do fluxo flex (embora falte display:flex aqui) */
+}
+
+/* Container principal do conteúdo Hero */
+.top-main-content {
+    display: flex; /* Habilita flexbox para organizar o conteúdo */
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza os elementos no eixo horizontal */
+    text-align: center; /* Garante a centralização dos textos */
+}
+
+/* Título principal de destaque (Hero Title) */
+.top-text-content {
+    font-size: 2.8rem; /* Define um tamanho de fonte grande para impacto */
+    line-height: 1.1; /* Reduz o espaço entre linhas para títulos compactos */
+    margin-bottom: 1.5rem; /* Cria espaço abaixo do título */
+}
+
+/* Subtítulo da seção Hero */
+.top-subtitle-content {
+    font-size: 0.9rem; /* Define um tamanho de fonte menor e discreto */
+    font-weight: 400; /* Define peso de fonte regular */
+    line-height: 1.5; /* Define um espaçamento entre linhas confortável para leitura */
+}
+
+/* Container para a organização de fotos/imagens */
+.photo-contents  {
+    display: flex; /* Habilita flexbox */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    width: 100%; /* Ocupa a largura total disponível */
+    margin-top: 2rem; /* Adiciona espaçamento acima das fotos */
+}
+
+/* Container interno para alinhamento de fotos específicas */
+.top-photos-content {
+    display: flex; /* Habilita flexbox */
+    justify-content: center; /* Centraliza as imagens */
+    gap: 10px; /* Adiciona um espaçamento de 10px entre cada imagem */
+}
+
+/* Regras para as imagens dentro da seção Hero */
+.top-photos-content img {
+    max-width: 90%; /* Impede que a imagem ultrapasse 90% da largura do container */
+    height: auto; /* Mantém a proporção original da imagem */
+}
+
+/* Container da seção intermediária superior */
+.middle-top-content {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha os itens verticalmente */
+    text-align: center; /* Centraliza os textos */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 6.875rem; /* Define um espaçamento superior largo (aprox 110px) */
+    width: 100%; /* Ocupa a largura total */
+}
+
+/* Texto de chamada da seção intermediária */
+.middle-top-text {
+    font-size: 1.8rem; /* Define o tamanho da fonte */
+    max-width: 80%; /* Limita a largura do texto para melhor legibilidade */
+    margin-bottom: 2rem; /* Adiciona margem abaixo do texto */
+}
+
+/* Container para o player de vídeo ou imagem simulada */
+.middle-top-video {
+    max-width: 100%; /* Limita a largura total */
+    height: auto; /* Mantém a altura proporcional */
+    border-radius: 20px; /* Arredonda os cantos do container */
+    display: flex; /* Habilita flexbox */
+    justify-content: center; /* Centraliza o conteúdo interno */
+    width: 100%; /* Ocupa 100% de largura */
+}
+
+/* Regras para a imagem dentro do container de vídeo */
+.middle-top-video img {
+    max-width: 90%; /* Limita a largura da imagem */
+    height: auto; /* Mantém a proporção */
+}
+
+/* Seção intermediária inferior (Geralmente para FAQ ou Proposta de Valor) */
+.middle-bottom-content {
+    margin-top: 6.25rem; /* Define espaçamento superior largo (100px) */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha o título e o box de conteúdo */
+}
+
+/* Título da seção inferior */
+.middle-bottom-text {
+    text-align: center; /* Centraliza o texto */
+    padding: 1rem 1rem 0 1rem; /* Adiciona preenchimento interno */
+    margin: 2rem; /* Adiciona margem externa */
+    font-size: 2rem; /* Define o tamanho da fonte */
+    max-width: 77%; /* Limita a largura para criar quebra de linha visual */
+}
+
+/* Box cinza que agrupa as perguntas e fotos */
+.middle-bottom-box {
+    background-color: var(--cinza-claro); /* Usa a variável cinza claro de fundo */
+    margin: 1rem; /* Adiciona margem externa lateral */
+    border-radius: 1rem; /* Arredonda os cantos do box */
+    align-items: center; /* Alinha itens internamente (funciona com flex) */
+    justify-content: center; /* Centraliza itens internamente */
+    max-width: 90%; /* Limita a largura máxima do box */
+    padding-bottom: 3.5rem; /* Adiciona espaço ao final da seção cinza */
+}
+
+/* Container para a foto de destaque dentro do box cinza */
+.middle-bottom-photo {
+    display: flex; /* Habilita flexbox */
+    justify-content: center; /* Centraliza a foto horizontalmente */
+    padding: 3rem 0 2rem; /* Define paddings superior, lateral zero e inferior */
+    aspect-ratio: 15.5 / 12; /* Mantém uma proporção de tela específica */
+}
+
+/* Texto da pergunta no FAQ */
+.question-text {
+    font-size: 1rem; /* Define o tamanho da fonte */
+    font-weight: 500; /* Define peso de fonte médio */
+}
+
+/* Layout da linha da pergunta (texto + ícone) */
+.question-text-2 {
+    display: flex; /* Habilita flexbox */
+    flex-direction: row; /* Alinha em linha */
+    justify-content: space-between; /* Afasta o texto do ícone "+" nas pontas */
+}
+
+/* Card individual branco de pergunta */
+.question-box {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha pergunta e resposta (se aberta) */
+    background-color: white; /* Cor de fundo branca para destaque */
+    justify-content: space-between; /* Distribui conteúdo interno */
+    margin: 0.75rem 1.25rem 0.75rem 1.25rem; /* Margens para espaçamento entre cards */
+    padding: 0.8rem; /* Preenchimento interno do card */
+    border-radius: 0.5rem; /* Arredonda levemente os cantos */
+}
+
+/* Margem superior para o texto da resposta */
+.question-response p {
+    margin-top: 1rem; /* Cria espaço entre a pergunta e a resposta */
+}
+
+/* Estilo do texto da resposta */
+.question-response {
+    color: var(--cinza); /* Usa a variável cinza para o texto da resposta */
+    font-size: 0.9rem; /* Define tamanho menor para a resposta */
+}
+
+/* Cor do ícone "+" ou "-" no FAQ */
+.icon-plus {
+    color: var(--cinza); /* Usa a variável cinza */
+}
+
+/* Seção superior do rodapé (Chamada para ajuda) */
+.footer-top-content {
+    background-color: var(--azulclaro); /* Fundo azul principal */
+    color: white; /* Texto em branco */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha os textos e botão */
+    padding: 2rem 10rem 1rem 1.25rem; /* Padding assimétrico conforme design */
+    border-top: 20px; /* (Propriedade incompleta, deveria ser border-top-width) */
+    border-start-start-radius: 20px; /* Arredonda canto superior esquerdo */
+    border-start-end-radius: 20px; /* Arredonda canto superior direito */
+}
+
+/* Título H2 do rodapé superior */
+.footer-top-content h2 {
+    padding-top: 3rem; /* Espaço interno superior */
+    font-size: 2.5rem; /* Tamanho da fonte grande */
+    font-weight: 600; /* Define peso de fonte negrito */
+    padding-bottom: 1rem; /* Espaço abaixo do título */
+}
+
+/* Parágrafo do rodapé superior */
+.footer-top-content p {
+    font-size: 14px; /* Define tamanho fixo da fonte */
+    font-weight: 100; /* Define fonte bem fina (Thin) */
+}
+
+/* Container do botão no rodapé */
+.footer-top-btn {
+    margin-top: 2.5rem; /* Espaçamento acima do botão */
+    margin-bottom: 5rem; /* Espaçamento abaixo do botão */
+}
+
+/* Estilo do botão "Learn More" */
+.learn-more {
+    margin-top: 2rem; /* Margem superior */
+    background-color: white; /* Fundo branco do botão */
+    border-radius: 100px; /* Botão estilo pílula */
+    color: black; /* Texto em preto para contraste */
+    text-align: center; /* Centraliza o texto */
+    font-size: 14px; /* Tamanho da fonte */
+    padding: 0.75rem 1.5rem 0.75rem 1.5rem; /* Padding para formato do botão */
+    font-weight: 600; /* Texto em negrito */
+}
+
+/* Linha divisória horizontal (HR) no rodapé */
+.footer-line {
+    display: flex; /* Habilita flexbox */
+    border: none; /* Remove a borda padrão do HR */
+    height: 1px; /* Define altura de 1 pixel */
+    background-color: #fff; /* Cor branca para a linha */
+    width: 100%; /* Largura total */
+    margin: 20px auto; /* Margem vertical e centralização horizontal */
+}
+
+/* Container para envolver a linha divisória */
+#footer-line {
+    display: flex; /* Habilita flexbox */
+    padding: 0 1.5rem 0 1.5rem; /* Padding lateral */
+    background-color: var(--azulclaro); /* Fundo azul para continuidade */
+}
+
+/* Parte intermediária do rodapé (Logo e descrição + Sidebar) */
+.footer-middle-top-content {
+    background-color: var(--azulclaro); /* Fundo azul */
+    display: flex; /* Habilita flexbox */
+    justify-content: space-between; /* Afasta o texto da logo dos links rápidos */
+    align-items: flex-start; /* Alinha itens pelo topo */
+    padding: 5rem 1.5rem; /* Paddings verticais e horizontais largos */
+    color: white; /* Texto em branco */
+}
+
+/* Sidebar de links rápidos no rodapé */
+.footer-middle-top-sidebar {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha os links verticalmente */
+    gap: 1.5rem; /* Espaçamento de 1.5rem entre cada link */
+} 
+
+/* Espaçamento abaixo da logo TalentHive no rodapé */
+.footer-middle-h3 {
+    padding-bottom: 1.063rem; /* Margem inferior de aprox 17px */
+}
+
+/* Bloco de descrição da logo no rodapé */
+.footer-middle-text {
+    max-width: 60%; /* Limita a largura da descrição da marca */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilo do H3 dentro do rodapé intermediário */
+.footer-middle-h3 h3 {
+    font-size: 1.5rem; /* Tamanho da fonte */
+    font-weight: 600; /* Peso negrito */
+    margin-bottom: 1rem; /* Margem inferior */
+}
+
+/* Estilo dos parágrafos da descrição no rodapé */
+.footer-middle-p p {
+    font-size: 0.9rem; /* Tamanho da fonte */
+    line-height: 1.5; /* Espaçamento entre linhas confortável */
+    font-weight: 300; /* Peso de fonte leve (Light) */
+}
+
+/* Seção de links agrupados (About, Resources, Social) */
+.footer-middle-bottom-content {
+    background-color: var(--azulclaro); /* Fundo azul */
+    color: white; /* Texto em branco */
+    font-weight: 100; /* Fonte fina */
+    display: flex; /* Habilita flexbox */
+    flex-direction: row; /* Organiza colunas lado a lado */
+    justify-content: space-between; /* Distribui as colunas igualmente */
+    padding: 1rem; /* Padding interno */
+}
+
+/* Estilização das colunas de links no rodapé */
+.row1, .row2, .row3 {
+    display: flex; /* Habilita flexbox */
+    line-height: 3rem; /* Define a altura da linha (espaçamento vertical entre links) */
+    padding: 0 0.5rem 0 0.5rem; /* Padding lateral */
+}
+
+/* Margem superior para o texto de Copyright */
+.footer-copyright {
+    padding-top: 4.75rem; /* Espaçamento superior largo */
+}
+
+/* Bloco final do rodapé (Copyright, Endereço e Políticas) */
+.footer-end-content {
+    background-color: var(--azulclaro); /* Fundo azul */
+    color: white; /* Texto em branco */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Empilha os textos centralizados */
+    text-align: center; /* Centraliza o texto */
+    gap: 1.25rem; /* Espaçamento entre as linhas de texto */
+    font-weight: 100; /* Fonte fina */
+}
+
+/* Cor especial para o link de "View on Maps" */
+#view-maps {
+    color: #8bc792; /* Cor verde clara característica */
+}
+
+/* Padding lateral para o texto de endereço */
+.footer-address {
+    padding: 0 2.5rem 0 2.5rem; /* Garante margens laterais no texto longo */
+}
+
+/* Padding inferior final para encerrar a página */
+.footer-end {
+    padding-bottom: 2rem; /* Espaçamento no fim de tudo */
+}

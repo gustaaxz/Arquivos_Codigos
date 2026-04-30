@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="71ba4841-a497-4200-91e3-afb34f61ab45" name="Changes" comment="16/02/2026 - Atividade">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/AtribuirPedidoMotorista.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/AtribuirPedidoMotorista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/BuscarPedidoPorDoc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/BuscarPedidoPorDoc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Conexao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Conexao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Entrega.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Entrega.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/HistoricoEntrega.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/HistoricoEntrega.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Motorista.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Motorista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Pedido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/SistemaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/SistemaDAO.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;gustaaxz&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/gustaaxz/Atividade_MySQL.git&quot;,
+    &quot;accountId&quot;: &quot;6f2869a1-32f0-4ded-83e0-bd7f13c0d3e4&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="39l1euFYwczantvA2kGZt1vFFlv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gustavo_hatschbach/Desktop/Java, JS, HTML, CSS e outros/IntelliJ/Atividade_MySQL&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/gustavo_hatschbach/IdeaProjects/Atividade_MySQL/src/main/java/org/example/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="71ba4841-a497-4200-91e3-afb34f61ab45" name="Changes" comment="" />
+      <created>1771255943116</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1771255943116</updated>
+    </task>
+    <task id="LOCAL-00001" summary="16/02/2026 - Atividade">
+      <option name="closed" value="true" />
+      <created>1771262138901</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1771262138901</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="16/02/2026 - Atividade" />
+    <option name="LAST_COMMIT_MESSAGE" value="16/02/2026 - Atividade" />
+  </component>
+</project>

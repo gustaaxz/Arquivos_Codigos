@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* --- ESTRUTURA DE LAYOUT (GRID E FLEX) --- 
+*/
+
+/* layout-container: O "pai" de toda a área de conteúdo abaixo do header.
+   - display: flex: Coloca o 'main' e a 'sidebar' um ao lado do outro.
+*/
+.layout-container {
+    display: flex; 
+    background-color: #f6f6f6; /* Fundo cinza muito claro para destacar os cards brancos */
+    min-height: 100vh; /* Garante que o fundo cubra pelo menos a altura inteira da tela */
+}
+
+/* main: A coluna principal onde ficam os artigos.
+   - flex: 3: No sistema flexbox, isso diz que esta coluna deve ocupar 75% do espaço disponível.
+*/
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 3; 
+    padding: 20px;
+}
+
+/* sidebar: A coluna lateral de suporte.
+   - flex: 1: Ocupa os 25% restantes do espaço.
+   - min-width: 320px: Impede que a lateral fique espremida demais em telas menores.
+*/
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    padding: 20px;
+    background-color: #f6f6f6;
+    min-width: 320px;
+    gap: 1.5rem; /* Espaçamento vertical entre os elementos da sidebar */
+    padding-top: 5.85rem; /* Espaço no topo para alinhar visualmente com o início dos artigos */
+}
+
+/* --- CABEÇALHO (HEADER) --- 
+*/
+
+header {
+    display: flex;
+    background-color: rgba(235, 233, 127, 0.911); /* Amarelo característico da marca */
+    padding: 15px 100px;
+    align-items: center; /* Centraliza itens verticalmente */
+    justify-content: space-between; /* Empurra o logo para a esquerda e o menu para a direita */
+}
+
+/* Agrupa o ícone .ico e o nome 'Byte a Byte' */
+.logo-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-menu h1 {
+    font-weight: 400; /* Texto mais fino para um ar mais sofisticado */
+    font-size: 1.75rem; /* Muda o tamanho do texto */
+}
+
+.logo-menu img {
+    max-width: 50px;
+    height: auto;
+}
+
+/* Menu de navegação superior */
+.menu-btn {
+    display: flex;
+    list-style: none; /* Remove as "bolinhas" da lista <ul> */
+    gap: 50px; /* Espaço entre cada link do menu */
+}
+
+.menu-btn li a {
+    text-decoration: none; /* Remove o sublinhado padrão azul */
+    color: black;
+    transition: 0.3s; /* Suaviza a animação de hover */
+}
+
+.menu-btn li a:hover {
+    text-decoration: underline; /* Adiciona sublinhado apenas quando o mouse passa por cima */
+}
+
+/* --- COMPONENTES DA HOME (PÁGINA INICIAL) --- 
+*/
+
+/* main-articles: Define como os cards de notícias aparecem na Home.
+   - grid: Cria uma grade de 3 colunas iguais (1fr cada).
+*/
+.main-articles {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* article-card: Cada "caixa" de notícia individual */
+.article-card {
+    margin: 15px;
+}
+
+/* Imagens dentro dos cards da Home */
+.main-articles img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    aspect-ratio: 16 / 9; /* Mantém todas as fotos no mesmo formato retangular de cinema */
+    object-fit: cover; /* Corta a imagem para preencher o espaço sem distorcer */
+}
+
+.text-main {
+    margin: 1rem;
+}
+
+/* Botão "Saiba Mais" */
+.know-more {
+    display: inline-flex;
+    padding: 12px 24px;
+    border: 1.5px black solid;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+/* --- WIDGETS DA SIDEBAR --- 
+*/
+
+/* Container para o iframe do YouTube */
+.video-sidebar {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que o vídeo respeite os cantos arredondados */
+    line-height: 0;
+}
+
+.video-sidebar iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+/* --- CONFIGURAÇÕES PARA PÁGINAS DE ARTIGO INTERNO --- 
+   Estes estilos só funcionam se o <body> tiver a classe .article-page.
+*/
+
+/* Muda de 3 colunas (grid) para apenas 1 coluna larga (block) no conteúdo do artigo */
+.article-page .main-articles {
+    display: block;
+}
+
+/* Aumenta a imagem principal dentro do texto do artigo */
+.article-page .article-card img {
+    max-width: 50%;
+}
+
+/* Melhora a legibilidade do texto longo (parágrafos) */
+.article-page .article-description {
+    line-height: 1.6; /* Espaçamento entre linhas maior para não cansar a vista */
+    font-size: 1rem;
+    color: #333;
+    text-align: justify; /* Alinha o texto perfeitamente nas duas margens */
+}
+
+/* Empurra a sidebar mais para baixo em artigos internos para não bater no título */
+.article-page .sidebar {
+    padding-top: 10rem;
+}
+
+/* --- TABELA DE ESPECIFICAÇÕES TÉCNICAS --- 
+*/
+
+.specs-container {
+    margin-top: 3rem;
+    width: 100%;
+}
+
+/* Título 'Ficha Técnica' com uma barra decorativa amarela ao lado */
+.specs-container h3 {
+    margin-bottom: 1.5rem;
+    border-left: 5px solid #ebe97f;
+    padding-left: 10px;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços duplos entre as bordas das células */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra leve para dar profundidade */
+}
+
+.specs-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+/* Efeito Zebra: Pinta as linhas pares (even) de cinza claro para facilitar a leitura */
+.specs-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estiliza a primeira coluna (ex: 'Processador', 'Memória') para ser mais escura e forte */
+.specs-table td:first-child {
+    font-weight: 500;
+    color: #555;
+    width: 50%;
+}
+
+/* --- RODAPÉ (FOOTER) --- 
+*/
+
+footer {
+    background-color: rgba(192, 191, 105, 0.911); /* Tom de amarelo um pouco mais escuro que o header */
+    padding: 3rem 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ícones de redes sociais */
+.social-media {
+    display: flex;
+    font-size: 1.5rem;
+    gap: 1.5rem;
+}
+
+.social-media i {
+    cursor: pointer; /* Muda o mouse para a mãozinha de clique */
+    transition: 0.3s;
+}
+
+/* --- ESTRUTURA LADO A LADO (IMAGEM + DESCRIÇÃO) --- 
+   Usado no topo dos artigos para colocar a foto do notebook ao lado do texto.
+*/
+
+/* Faz a imagem flutuar à esquerda 🖼️ */
+.float-img {
+    float: left; 
+    max-width: 50%; /* Define que ela ocupa metade da largura */
+    margin-right: 20px; /* Espaço para o texto não colar na imagem */
+    margin-bottom: 10px; /* Espaço para o texto que passar por baixo */
+    border-radius: 0.5rem;
+}
+
+/* Garante que o texto se comporte corretamente ao redor */
+.article-page .article-description {
+    display: block; /* Remove o comportamento de flex se houver */
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.article-text-container {
+    flex: 2 1 300px; /* O texto também ganha uma largura "ideal" antes de quebrar */
+}
+
+.article-text-container {
+    flex: 1; /* O texto ocupa todo o espaço que a imagem não usar */
+} 
+
+
+/* --- FORMULÁRIO DE CONTATO --- 
+*/
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 30px;
+}
+
+/* Agrupa Label + Input/Textarea */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Caixas de texto e áreas de mensagem */
+.form-group input, 
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+/* Quando o usuário clica para digitar, a borda fica amarela */
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ebe97f;
+}
+
+/* Estilo para o botão de enviar mensagem */
+.contact-form .know-more {
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: 600;
+    transition: 0.3s;
+    width: fit-content; /* O botão só tem a largura do texto interno */
+}
+
+/* @media - Responsividade (Testes) */
+
+@media (max-width: 1027px){
+    .main-articles {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .layout-container {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .menu-btn {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer {
+        padding: 20px;
+    }
+
+    .social-media {
+        font-size: 1rem
+    }
+
+    .article-page .article-description {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 867px) {
+    
+}
+
+@media (max-width: 576px) {
+    .main-articles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-page .article-description {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .main-articles {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    header {
+        padding: 10px;
+        gap: 10px
+    }
+
+    .logo-menu img {
+        max-width: 35px;
+    }
+
+    .logo-menu h1 {
+        font-size: 1.2rem;
+    }
+
+    .menu-btn {
+        gap: 12px;
+    }
+
+    .article-page .article-description {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 320px) {
+    html, body {
+        min-width: 320px;
+        overflow-x: auto;
+    }
+}
+
